@@ -1,5 +1,7 @@
 # PlantNet-300K
 
+There are an estimated 320,000 plant species in the world. The vast majority of these are vascular plants.
+
 <p align="middle">
   <img src="/images/1.jpg" width="180" hspace="2"/>
   <img src="/images/2.jpg" width="180" hspace="2"/>
@@ -19,7 +21,7 @@ If you use this work for your research, please cite the paper:
     title     = {{Pl@ntNet-300K}: a plant image dataset with high label ambiguity and a long-tailed distribution},
     year      = {2021},
     }
-    
+
 ### Dataset Version // Meta-data files
 
 Make sure you download the latest version of the dataset in Zenodo (version 1.1 as in the link above, not 1.0).
@@ -42,10 +44,10 @@ model = resnet18(num_classes=1081) # 1081 classes in Pl@ntNet-300K
 load_model(model, filename=filename, use_gpu=use_gpu)
 ```
 
-Note that if you want to fine-tune the model on another dataset, you have to change the last layer. You can find examples in the *get_model* function in *utils.py*. 
+Note that if you want to fine-tune the model on another dataset, you have to change the last layer. You can find examples in the *get_model* function in *utils.py*.
 ### Requirements
 
-Only pytorch, torchvision are necessary for the code to run. 
+Only pytorch, torchvision are necessary for the code to run.
 If you have installed anaconda, you can run the following command:
 
 ```conda env create -f plantnet_300k_env.yml```
@@ -56,6 +58,6 @@ In order to train a model on the PlantNet-300K dataset, run the following comman
 
 ```python main.py --lr=0.01 --batch_size=32 --mu=0.0001 --n_epochs=30 --epoch_decay 20 25 --k 1 3 5 10 --model=resnet18 --pretrained --seed=4 --image_size=256 --crop_size=224 --root=path_to_data --save_name_xp=xp1```
 
- You must provide in the "root" option the path to the train val and test folders. 
+ You must provide in the "root" option the path to the train val and test folders.
  The "save_name_xp" option is the name of the directory where the weights of the model and the results (metrics) will be stored.
  You can check out the different options in the file cli.py.
